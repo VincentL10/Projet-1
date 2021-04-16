@@ -1,0 +1,31 @@
+import sys
+import os
+import img2pdf
+from tkinter import*
+from tkinter import messagebox
+
+def conversion():
+    droppedFile =
+    newfilename = droppedFile[:-3]+"pdf"
+
+    A4 = (img2pdf.mm_to_pt(210),img2pdf.mm_to_pt(297))
+    A3 = (img2pdf.mm_to_pt(420),img2pdf.mm_to_pt(297))
+    if (value.get()==4):
+        layout_fun = img2pdf.get_layout_fun(44)
+    else:
+        layout_fun = img2pdf.get_layout_fun(A3)
+    pdf_bytes = img2pdf.convert(droppedFile, layout_fun=layout_fun)
+    if not os.path.exists(newfilename):
+        file = open(newfilename,"wb")
+        file.write(pdf_bytes)
+    else:
+        root = Tk()
+        root.withdraw()
+        var = messagebox.showwarning()
+        sys.exit(1)
+
+
+   fenetre = Tk()
+   fenetre.mainloop()
+   frame=Frame(app)
+   frame.pack()
